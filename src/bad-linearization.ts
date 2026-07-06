@@ -4,8 +4,10 @@
 // both has no valid C3 linearization. Runtime mixin libraries silently pick
 // some order; ts-mixin-class refuses to compile it and explains why.
 //
-// UNCOMMENT the class `Z` at the bottom, and the compiler (and the editor,
-// with the workspace TypeScript selected) will show:
+// UNCOMMENT the class `Z` at the bottom and rebuild (`npm run build`) to see:
+// (in StackBlitz the error shows only in the terminal, not in the editor —
+// StackBlitz doesn't load the language-service plugin; in local VS Code the
+// editor shows it too)
 //
 //   error TS990007: Cannot linearize mixin classes with the C3 algorithm.
 //   Requested mixins: X, Y. Conflicting order requirements: A -> B; B -> A.
@@ -37,6 +39,9 @@ class X implements A, B {}
 @mixin()
 class Y implements B, A {}
 
-// Z asks for both X and Y — an impossible order. Uncomment to see the error:
+// Z asks for both X and Y — an impossible order. Uncomment and rebuild
+// (`npm run build`) to see the error. In StackBlitz it shows only in the
+// terminal (the language-service plugin is not loaded there); in local
+// VS Code the editor shows it too.
 
 // class Z implements X, Y {}
