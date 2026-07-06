@@ -5,7 +5,7 @@ multiple inheritance for TypeScript with native `implements` syntax and zero run
 
 ## ▶ Try it online
 
-**https://stackblitz.com/github/tonyboho/ts-mixin-class-example**
+**https://stackblitz.com/~/github.com/tonyboho/ts-mixin-class-example?file=src/main.ts**
 
 StackBlitz installs the dependencies and runs the demo automatically. The terminal
 prints the result of composing mixins, C3 linearization, `instanceof`, and generics.
@@ -22,9 +22,13 @@ To make the editor mixin-aware:
 2. Run **`TypeScript: Select TypeScript Version`**.
 3. Choose **`Use Workspace Version`**.
 
-The false errors disappear. (Full hover/quick-info through the language-service
-plugin is limited in StackBlitz — for the complete editor experience, clone and open
-in local VS Code.)
+The false red squiggles disappear.
+
+> **Note:** hover / Quick Info still does not work in StackBlitz — its editor does
+> not load the transformer's language-service plugin
+> ([stackblitz/webcontainer-core#1142](https://github.com/stackblitz/webcontainer-core/issues/1142)).
+> For the complete editor experience (hover, go-to-definition, mixin-aware
+> diagnostics), clone this repo and open it in local VS Code.
 
 ## Run locally
 

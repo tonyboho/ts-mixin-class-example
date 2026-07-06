@@ -1,8 +1,10 @@
 // NOTE: In StackBlitz the editor may show false red squiggles on @mixin /
 // implements / super — its bundled TypeScript doesn't run the transformer.
 // Fix: command palette -> "TypeScript: Select TypeScript Version" -> "Use
-// Workspace Version". The code compiles and RUNS correctly regardless — see
-// the terminal output.
+// Workspace Version", and they disappear. (Hover / Quick Info still won't work
+// here — StackBlitz doesn't load the language-service plugin; clone locally for
+// the full editor experience.) The code compiles and RUNS correctly regardless
+// — see the terminal output.
 
 import { mixin } from "ts-mixin-class"
 
