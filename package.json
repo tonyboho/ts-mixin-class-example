@@ -4,11 +4,11 @@
     "type": "module",
     "scripts": {
         "prepare": "ts-patch install -s",
-        "start": "npm run prepare && tspc -p tsconfig.json && node dist/main.js",
+        "start": "npm run prepare && tspc -p tsconfig.json && node dist/basic.js && node dist/linearization.js && node dist/generics.js && node dist/construction.js",
         "build": "tspc -p tsconfig.json"
     },
     "dependencies": {
-        "ts-mixin-class": "0.0.8"
+        "ts-mixin-class": "0.0.9"
     },
     "devDependencies": {
         "ts-patch": "4.0.1",

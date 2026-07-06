@@ -5,10 +5,17 @@ multiple inheritance for TypeScript with native `implements` syntax and zero run
 
 ## ▶ Try it online
 
-**https://stackblitz.com/~/github.com/tonyboho/ts-mixin-class-example?file=src/main.ts**
+**https://stackblitz.com/~/github.com/tonyboho/ts-mixin-class-example?file=src/basic.ts**
 
-StackBlitz installs the dependencies and runs the demo automatically. The terminal
-prints the result of composing mixins, C3 linearization, `instanceof`, and generics.
+StackBlitz installs the dependencies and runs the demos automatically. Each demo is a
+small self-contained file:
+
+- [src/basic.ts](src/basic.ts) — two mixins, native `implements`, `super`, `instanceof`
+- [src/linearization.ts](src/linearization.ts) — C3 linearization on a diamond
+- [src/generics.ts](src/generics.ts) — generic mixins and consumers
+- [src/construction.ts](src/construction.ts) — typed config + static `new` (cooperative initialization)
+- [src/bad-linearization.ts](src/bad-linearization.ts) — an impossible order, rejected
+  at compile time (uncomment the class `Z` at the bottom to see the error)
 
 ### Seeing the editor without false errors
 
@@ -38,28 +45,35 @@ npm start
 ```
 
 `npm install` patches the local TypeScript via `ts-patch` (the `prepare` script), and
-`npm start` compiles [src/main.ts](src/main.ts) with `tspc` and runs it with Node.
+`npm start` compiles the demos with `tspc` and runs them with Node.
 
 Expected output:
 
 ```
-label:                 Ada
-describe:              Ada (age 1ms)
-instanceof Named:      true
+— basic —
+describe:               Ada (age 2ms)
+instanceof Named:       true
 instanceof Timestamped: true
 
-C3 order:              Combined > Left > Right > Root
+— linearization (C3) —
+order: Combined > Left > Right > Root
 
-generic getValue():    42
+— generics —
+getValue(): 42
+
+— construction —
+fullName:   Ada Lovelace
+department: Engineering
 ```
 
-## What it shows
+To see the compile-time rejection of an impossible mixin order, uncomment the class `Z`
+at the bottom of [src/bad-linearization.ts](src/bad-linearization.ts) and rebuild:
 
-- two mixins composed into a class with native `implements`,
-- `super` calls reaching into the mixin chain,
-- C3 linearization on a diamond,
-- `instanceof` on mixins,
-- generics.
+```
+src/bad-linearization.ts(42,20): error TS990007: Cannot linearize mixin classes
+with the C3 algorithm. Requested mixins: X, Y. Conflicting order requirements:
+A -> B; B -> A. ...
+```
 
 ## Learn more
 
