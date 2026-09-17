@@ -1,3 +1,17 @@
+// ⚠ BEFORE YOU START
+//
+// 1. Trying this example locally? Don't forget to run `npm run prepare`
+//    (see the Setup section of the README:
+//    https://github.com/tonyboho/ts-mixin-class#setup).
+//
+// 2. Select the workspace TypeScript version in VS Code / StackBlitz,
+//    otherwise the editor shows false errors on @mixin / implements / super:
+//
+//    Ctrl/Cmd+Shift+P -> "TypeScript: Select TypeScript Version" -> "Use Workspace Version".
+//
+//    (Hover / Quick Info still won't work in StackBlitz — it doesn't load
+//    the language-service plugin; clone locally for the full experience.)
+
 // An impossible mixin order — rejected at COMPILE TIME.
 //
 // `X` fixes the order A-before-B, `Y` fixes the opposite. A class consuming
